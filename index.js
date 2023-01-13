@@ -75,9 +75,10 @@ console.log("\n一个简单的随机图片服务端，随机返回一张程序�
 const fs = require("fs");
 const express = require("express");
 const compression = require("compression"); // 用于gzip压缩
+const app = express();
 app.use(compression()); // 对express所有路由启用gzip
 const randomFile = require("select-random-file");
-const app = express();
+const path = require("path");
 const imgFolder = "./";
 const yaml = require("yaml");
 const codeDesc = { "THE_BEAST": "img标签", 777: "原图" };
@@ -161,7 +162,7 @@ app.get("/", async (req, res) => {
     if (!file) {
       res.send(`<img src="${base64NotFoundImg}" />`);
     } else {
-      res.sendFile(process.cwd() + "/" + file);
+      res.sendFile(path.join(process.cwd(), file));
     }
   } else {
     res.send();
