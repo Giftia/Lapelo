@@ -1,7 +1,7 @@
 "use strict";
 /**
  * Author: Giftina: https://github.com/Giftia/
- * Lapelo，一个简单的随机图片服务端，随机返回一张程序所在目录下的图片，可用于在线随机壁纸服务。
+ * Lapelo，一个简单的随机图片web服务端，随机返回一张程序所在目录下的图片，可用于在线随机壁纸服务。
  * 本程序基于 MIT 协议开源，欢迎 Fork 和 Star
  * Version: 0.0.1
  */
@@ -72,7 +72,7 @@ const logger = winston.createLogger({
   ],
 });
 
-console.log("\n一个简单的随机图片服务端，随机返回一张程序所在目录下的图片，可用于在线随机壁纸服务。\n".alert);
+console.log("\n一个简单的随机图片web服务端，随机返回一张程序所在目录下的图片，可用于在线随机壁纸服务。\n".alert);
 
 const fs = require("fs");
 const express = require("express");

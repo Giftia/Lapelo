@@ -1,7 +1,7 @@
 {
   "name": "lapelo",
   "version": "0.0.1",
-  "decription": "一个简单的随机图片服务端，随机返回一张程序所在目录下的图片，常用于在线随机壁纸服务。",
+  "decription": "一个简单的随机图片web服务端，随机返回一张程序所在目录下的图片，常用于在线随机壁纸服务。",
   "license": "MIT",
   "scripts": {
     "run": "node index.js",
