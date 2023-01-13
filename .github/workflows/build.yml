@@ -57,26 +57,6 @@ jobs:
           "
           cat ./version-number >> $GITHUB_ENV
 
-      - name: Pre-compress
-        shell: bash
-        run: |
-          npm i archiver
-          node -e "
-            const archiver = require('archiver');
-            const fs = require('fs');
-            const path = require('path');
-            const output = fs.createWriteStream(path.join(__dirname, 'Lapelo-${{ env.VERSION_NUMBER }}_${{ runner.os }}.zip'));
-            const archive = archiver('zip', {
-              zlib: { level: 9 }
-            });
-            archive.pipe(output);
-            archive.file('./README.md', { name: 'README.md' });
-            archive.file('./LICENSE', { name: 'LICENSE' });
-            archive.file('./Lapelo.exe', { name: 'Lapelo.exe' });
-            archive.file('./Lapelo', { name: 'Lapelo' });
-            archive.finalize();
-          "
-
       - name: Get Current Time
         shell: bash
         id: time
@@ -87,5 +67,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Lapelo-${{ env.VERSION_NUMBER }}_${{ runner.os }}-${{ steps.time.outputs.now }}
-          path: Lapelo-${{ env.VERSION_NUMBER }}_${{ runner.os }}.zip
-          if-no-files-found: error
+          path: |
+            ./README.md
+            ./LICENSE
+            ./Lapelo.exe
+            ./Lapelo
+          if-no-files-found: warn
